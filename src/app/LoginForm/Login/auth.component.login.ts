@@ -13,7 +13,7 @@ import { FormValidate } from "../Services/auth.services";
     <mat-label>User name</mat-label>
     <input matInput type="text" [(ngModel)]="username" /> 
 </mat-form-field>
-<button mat-button (click)="validate()">Login</button>
+<button mat-button (click)="fetchAPI()">Login</button>
     </div>`,
     standalone:true
 })
@@ -22,5 +22,10 @@ export class LoginForm{
     username ='username';
     validate(){
         console.log(this.service.validate(this.username))
+    }
+    fetchAPI(){
+        this.service.fetchApi().subscribe((data:any)=>{
+            console.log({data});
+        })
     }
 }
